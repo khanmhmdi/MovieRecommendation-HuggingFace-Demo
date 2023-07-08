@@ -4,3 +4,4 @@ numpy
 fastai
 beautifulsoup4
 transformers
+datasets
