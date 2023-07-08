@@ -7,12 +7,16 @@ import requests, io
 import PIL.Image
 from urllib.request import urlopen
 
+from huggingface_hub import hf_hub_download
+
 # with open('./MovieRecommendation/Recommender_System/master_ui/Data/movie_data.json', 'r+', encoding='utf-8') as f:
 #     data = json.load(f)
 # with open('./MovieRecommendation/Recommender_System/master_ui/Data/movie_titles.json', 'r+', encoding='utf-8') as f:
 #     movie_titles = json.load(f)
+titles_path = hf_hub_download(repo_id="Khanmhmdi/Collaborative-movie-recommendation-systems",
+                              filename="ContentBase Models/Overview Model/titles.csv")
 
-movie_titles = pd.read_csv('./MovieRecommendation/Recommender_System/master_ui/Models/Overview Model/titles.csv')
+movie_titles = pd.read_csv(titles_path)
 hdr = {'User-Agent': 'Mozilla/5.0'}
 
 
