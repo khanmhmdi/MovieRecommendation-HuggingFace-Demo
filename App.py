@@ -7,8 +7,8 @@ import requests, io
 import PIL.Image
 from urllib.request import urlopen
 
-with open('./MovieRecommendation/Recommender_System/master_ui/Data/movie_data.json', 'r+', encoding='utf-8') as f:
-    data = json.load(f)
+# with open('./MovieRecommendation/Recommender_System/master_ui/Data/movie_data.json', 'r+', encoding='utf-8') as f:
+#     data = json.load(f)
 # with open('./MovieRecommendation/Recommender_System/master_ui/Data/movie_titles.json', 'r+', encoding='utf-8') as f:
 #     movie_titles = json.load(f)
 
@@ -97,14 +97,14 @@ def run():
                 st.warning('Please select three movies!!')
             else:
                 no_of_reco = st.slider('Number of movies you want Recommended:', min_value=5, max_value=20, step=1)
-                genres1 = data[movies.index(select_movie1)]
-                genres2 = data[movies.index(select_movie2)]
-                genres3 = data[movies.index(select_movie3)]
-                test_points = genres1 + genres2 + genres3
+                # genres1 = data[movies.index(select_movie1)]
+                # genres2 = data[movies.index(select_movie2)]
+                # genres3 = data[movies.index(select_movie3)]
+                # test_points = genres1 + genres2 + genres3
                 print("----------------", select_movie1)
                 print("----------------", select_movie2)
                 print("----------------", select_movie3)
-                print("-----------------",test_points)
+                # print("-----------------",test_points)
                 #-----------------------------------------------------
                 import RecommendationHandler
                 hybrid_Recommendation = RecommendationHandler([select_movie1,select_movie2,select_movie3])
@@ -172,21 +172,21 @@ def run():
                 test_point.append(imdb_score)
                 #-----------------------------------------------------
                 import RecommendationHandler
-                hybrid_Recommendation = RecommendationHandler([select_movie1,select_movie2,select_movie3])
-                table = hybrid_Recommendation.hybridRecommendationSystem()
+                # hybrid_Recommendation = RecommendationHandler([select_movie1,select_movie2,select_movie3])
+                # table = hybrid_Recommendation.hybridRecommendationSystem()
                 #-----------------------------------------------------
                 # table = KNN_Movie_Recommender(test_point, no_of_reco)
                 c = 0
                 st.success('Some of the movies from our Recommendation, have a look below')
-                for movie, link, ratings in table:
-                    c += 1
-                    st.markdown(f"({c})[ {movie}]({link})")
-                    director, cast, story, total_rat = get_movie_info(link)
-                    st.markdown(director)
-                    st.markdown(cast)
-                    st.markdown(story)
-                    st.markdown(total_rat)
-                    st.markdown('IMDB Rating: ' + str(ratings) + '⭐')
+                # for movie, link, ratings in table:
+                #     c += 1
+                #     st.markdown(f"({c})[ {movie}]({link})")
+                #     director, cast, story, total_rat = get_movie_info(link)
+                #     st.markdown(director)
+                #     st.markdown(cast)
+                #     st.markdown(story)
+                #     st.markdown(total_rat)
+                #     st.markdown('IMDB Rating: ' + str(ratings) + '⭐')
         else:
             if sel_gen:
                 imdb_score = st.slider('Choose IMDb score:', 1, 10, 8)
@@ -195,22 +195,22 @@ def run():
                 test_point.append(imdb_score)
                 #-----------------------------------------------------
                 import RecommendationHandler
-                hybrid_Recommendation = RecommendationHandler([select_movie1,select_movie2,select_movie3])
-                table = hybrid_Recommendation.hybridRecommendationSystem()
-                #-----------------------------------------------------
+                # hybrid_Recommendation = RecommendationHandler([select_movie1,select_movie2,select_movie3])
+                # table = hybrid_Recommendation.hybridRecommendationSystem()
+                # -----------------------------------------------------
                 # table = KNN_Movie_Recommender(test_point, no_of_reco)
-                c = 0
-                st.success('Some of the movies from our Recommendation, have a look below')
-                for movie, link, ratings in table:
-                    c += 1
-                    st.markdown(f"({c})[ {movie}]({link})")
-                    movie_poster_fetcher(link)
-                    director, cast, story, total_rat = get_movie_info(link)
-                    st.markdown(director)
-                    st.markdown(cast)
-                    st.markdown(story)
-                    st.markdown(total_rat)
-                    st.markdown('IMDB Rating: ' + str(ratings) + '⭐')
+                # c = 0
+                # st.success('Some of the movies from our Recommendation, have a look below')
+                # for movie, link, ratings in table:
+                #     c += 1
+                #     st.markdown(f"({c})[ {movie}]({link})")
+                #     movie_poster_fetcher(link)
+                #     director, cast, story, total_rat = get_movie_info(link)
+                #     st.markdown(director)
+                #     st.markdown(cast)
+                #     st.markdown(story)
+                #     st.markdown(total_rat)
+                #     st.markdown('IMDB Rating: ' + str(ratings) + '⭐')
 
 
 run()
